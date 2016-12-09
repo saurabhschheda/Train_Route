@@ -58,45 +58,6 @@ void dijkstra(int graph[][15], int src, int dist[], int parent[], int nodes)
     }
 }
 
-// Function to construct and print MST for a graph represented using adjacency
-// matrix representation
-void prim(int graph[][15], int parent[], int src, int nodes) 
-{
-    // Key values used to pick minimum weight edge in cut
-    int key[nodes], i, count, permanant, temporary; 
-    int mstSet[nodes]; // To represent set of vertices not yet included in MST
-
-    // Initialize all keys as INFINITE
-    for (i = 0; i < nodes; i++) 
-    {
-        key[i] = INT_MAX;
-        mstSet[i] = 0;
-    }
-
-    key[src] = 0;
-    parent[src] = -1;
-
-    for (count = 0; count < nodes - 1; count++) 
-    {
-        // Pick the minimum key vertex not yet included in MST
-        permanant = minDistance(key, mstSet, nodes);
-        mstSet[permanant] = 1;
-
-        for (temporary = 0; temporary < nodes; temporary++)
-        {
-            if 
-            (
-                graph[permanant][temporary] &&
-                !mstSet[temporary] &&
-                graph[permanant][temporary] < key[temporary]
-            ) {
-                parent[temporary]  = permanant;
-                key[temporary] = graph[permanant][temporary];
-            }
-        }
-    }
-}
-
 void createSubGraph(int graph[][15], int nodes[], int size, int subgraph[][15]) 
 {
     int i, j, dist[size], parent[size], current, prev;

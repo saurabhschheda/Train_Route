@@ -30,15 +30,6 @@ void clear(int array[], int size)
         array[i] = 0;
 }
 
-void createMatrix(int parent[], int nodes, int graph[][15], int matrix[][15]) 
-{
-    int i, j;
-    for (i = 0; i < nodes; ++i)
-        clear(matrix[i], nodes);
-    for (i = 1; i < nodes; ++i)
-        addEdge(matrix, parent[i], i, graph[parent[i]][i]);
-}
-
 void findLeaves(int parent[], int leaves[], int size) 
 {
     int i, j;
@@ -157,14 +148,6 @@ struct Node* getRoute(struct Bogey train[15], int map[][15], int stations)
         i = parent[i];
     }
     
-    //Clearing parent to use in prim function
-    for(i = 1; i < stations; ++i)
-        parent[i] = -1;
-        
-    //And create an MST in the form of adjacency matrix for the subgraph
-    prim(subgraph, parent, 0, stations);
-    createMatrix(parent, stations, subgraph, adjacencyMatrix);
-	
 	//Find all leaf nodes
     findLeaves(parent, leaves, stations);
 
