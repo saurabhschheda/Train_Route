@@ -19,10 +19,10 @@ This function creates the route, implemented as a linked list, and returns head 
 4.	A minimal spanning tree of this subgraph is made and stored as an adjacency matrix
 5.	All leaf nodes are taken. A leaf node is a terminal station. `findLeaves()` does this job
 6.	Route is created by the `createRoute()`
-### CREATEROUTE
+### createRoute()
 1.	Initially `source = 0`.
 2.	Loop until `leaves` is empty:
-..1.	Remove source from leaves, that is, `leaves[source] = 0`
-..2.	Find the nearest leaf to `source`
-..3.	Append shortest path to nearest leaf from `source` to `route`
-..4.	`source` = nearest leaf
+  1.	Remove source from leaves, that is, `leaves[source] = 0`
+  2.	Find the nearest leaf to `source`
+  3.	Append shortest path to nearest leaf from `source` to `route`
+  4.	`source` = nearest leaf
